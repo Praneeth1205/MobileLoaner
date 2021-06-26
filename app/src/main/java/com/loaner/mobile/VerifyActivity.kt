@@ -16,6 +16,7 @@ import kotlin.random.nextInt
 
 class VerifyActivity : AppCompatActivity() {
     lateinit var prefs: Prefs
+    var number = 0
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_verify)
@@ -23,9 +24,7 @@ class VerifyActivity : AppCompatActivity() {
         prefs = Prefs(this)
 
 
-        //getOtp()
-
-        val number = Random.nextInt(1000..9999)
+        number = Random.nextInt(1000..9999)
         otpTxt.text = number.toString()
 
         editMobile.setOnClickListener {
@@ -53,27 +52,37 @@ class VerifyActivity : AppCompatActivity() {
         }
 
         go_btn?.setOnClickListener {
-            val progressDialog = ProgressDialog(this)
-            progressDialog.setMessage("Loading...")
-            progressDialog.setCanceledOnTouchOutside(false)
-            progressDialog.setCancelable(false)
-            progressDialog.show()
 
-            Handler(Looper.getMainLooper()).postDelayed({
-                progressDialog.dismiss()
-                when {
-                    pin_entry.text.toString() == "" -> {
-                        Toast.makeText(this,"Enter OTP...",Toast.LENGTH_SHORT).show()
-                    }
-                    else -> {
+            when {
+                pin_entry.text.toString() == "" -> {
+                    Toast.makeText(this, "Enter OTP...", Toast.LENGTH_SHORT).show()
+                }
+                pin_entry.text.toString() != number.toString() -> Toast.makeText(
+                    this,
+                    "Wrong OTP Entered...",
+                    Toast.LENGTH_SHORT
+                ).show()
+
+                else -> {
+                    val progressDialog = ProgressDialog(this)
+                    progressDialog.setMessage("Loading...")
+                    progressDialog.setCanceledOnTouchOutside(false)
+                    progressDialog.setCancelable(false)
+                    progressDialog.show()
+
+                    Handler(Looper.getMainLooper()).postDelayed({
+                        progressDialog.dismiss()
+
                         prefs.isLoggined = true
-                        val intent = Intent(this,MainActivity::class.java)
+                        val intent = Intent(this, MainActivity::class.java)
                         startActivity(intent)
                         finish()
-                    }
-                }
 
-            }, 2000)
+                    }, 2000)
+                }
+            }
+
+
         }
     }
 }

@@ -24,16 +24,16 @@ class LoanDetailsActivity : AppCompatActivity(), View.OnClickListener, PaymentSt
     private var selectAmount = 10000
     private var selectedDays = 120
     private var defaultInterest = 3.4
-    private var default_sd = 200
+    private var default_sd = 250
 
-    private var sd_1000 = 50
-    private var sd_5000 = 150
-    private var sd_10000 = 200
-    private var sd_20000 = 300
-    private var sd_30000 = 330
-    private var sd_50000 = 400
-    private var sd_80000 = 430
-    private var sd_100000 = 500
+    private var sd_1000 = 65
+    private var sd_5000 = 180
+    private var sd_10000 = 250
+    private var sd_20000 = 330
+    private var sd_30000 = 360
+    private var sd_50000 = 410
+    private var sd_80000 = 480
+    private var sd_100000 = 550
 
     lateinit var easyUpiPayment : EasyUpiPayment
     lateinit var prefs: Prefs

@@ -10,21 +10,21 @@
     <RelativeLayout
         android:id="@+id/relative1"
         android:layout_width="match_parent"
-        android:layout_height="100dp"
+        android:layout_height="50dp"
         android:background="@drawable/gradient_background">
 
         <ImageView
             android:id="@+id/backBtn"
             android:layout_width="30dp"
             android:layout_height="30dp"
+            android:layout_centerVertical="true"
             android:layout_margin="10dp"
             android:src="@drawable/ic_baseline_back_btn" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="40dp"
-            android:layout_marginTop="50dp"
+            android:layout_centerInParent="true"
             android:text="Loan Report"
             android:textAllCaps="false"
             android:textColor="@color/white"
@@ -33,11 +33,13 @@
 
         <ImageView
             android:id="@+id/img1"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
             android:layout_alignParentEnd="true"
             android:layout_alignParentRight="true"
-            android:layout_margin="30dp"
+            android:layout_centerVertical="true"
+            android:layout_marginTop="5dp"
+            android:layout_marginRight="20dp"
             android:background="@drawable/background_white"
             android:src="@drawable/getloan" />
     </RelativeLayout>
@@ -53,128 +55,162 @@
         android:textSize="16sp"
         android:textStyle="bold" />
 
-    <HorizontalScrollView
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:padding="10dp"
-        android:scrollbars="none">
+        android:layout_marginStart="10sp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="10sp"
+        android:orientation="horizontal"
+        android:weightSum="3">
 
-        <LinearLayout
-            android:layout_width="wrap_content"
+
+        <Button
+            android:id="@+id/b1000"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_weight="1"
+            android:background="@drawable/loan_amount_background"
+            android:text="1000"
+            android:textAllCaps="false"
+            android:textColor="@color/black"
+            android:textSize="12sp"
+            android:textStyle="normal" />
+
+        <Button
+            android:id="@+id/b5000"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_weight="1"
+            android:background="@drawable/loan_amount_background"
+            android:text="5000"
+            android:textAllCaps="false"
+            android:textColor="@color/black"
+            android:textSize="12sp"
+            android:textStyle="normal" />
+
+
+        <Button
+            android:id="@+id/b10000"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_weight="1"
+            android:background="@drawable/button_gradient"
+            android:text="10,000"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:textSize="12sp"
+            android:textStyle="normal" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10sp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="10sp"
+        android:orientation="horizontal"
+        android:weightSum="3">
+
+
+        <Button
+            android:id="@+id/b20000"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_weight="1"
+            android:background="@drawable/loan_amount_background"
+            android:text="20,000"
+            android:textAllCaps="false"
+            android:textColor="@color/black"
+            android:textSize="12sp"
+            android:textStyle="normal" />
 
+        <Button
+            android:id="@+id/b30000"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_weight="1"
+            android:background="@drawable/loan_amount_background"
+            android:text="30,000"
+            android:textAllCaps="false"
+            android:textColor="@color/black"
+            android:textSize="12sp"
+            android:textStyle="normal" />
 
-            <Button
-                android:id="@+id/b1000"
-                android:layout_width="100dp"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="15dp"
-                android:layout_marginTop="5dp"
-                android:background="@drawable/loan_amount_background"
-                android:text="1000"
-                android:textAllCaps="false"
-                android:textColor="@color/black"
-                android:textSize="12sp"
-                android:textStyle="normal" />
+        <Button
+            android:id="@+id/b50000"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_weight="1"
+            android:background="@drawable/loan_amount_background"
+            android:text="50,000"
+            android:textAllCaps="false"
+            android:textColor="@color/black"
+            android:textSize="12sp"
+            android:textStyle="normal" />
+    </LinearLayout>
 
-            <Button
-                android:id="@+id/b5000"
-                android:layout_width="100dp"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="30dp"
-                android:layout_marginTop="5dp"
-                android:background="@drawable/loan_amount_background"
-                android:text="5000"
-                android:textAllCaps="false"
-                android:textColor="@color/black"
-                android:textSize="12sp"
-                android:textStyle="normal" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10sp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="10sp"
+        android:orientation="horizontal"
+        android:weightSum="3">
 
+        <Button
+            android:id="@+id/b80000"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_weight="1"
+            android:background="@drawable/loan_amount_background"
+            android:text="80,000"
+            android:textAllCaps="false"
+            android:textColor="@color/black"
+            android:textSize="12sp"
+            android:textStyle="normal" />
 
-            <Button
-                android:id="@+id/b10000"
-                android:layout_width="100dp"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="30dp"
-                android:layout_marginTop="5dp"
-                android:background="@drawable/button_gradient"
-                android:text="10,000"
-                android:textAllCaps="false"
-                android:textColor="@color/white"
-                android:textSize="12sp"
-                android:textStyle="normal" />
+        <Button
+            android:id="@+id/b100000"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_weight="1"
+            android:background="@drawable/loan_amount_background"
+            android:text="1,00,000"
+            android:textAllCaps="false"
+            android:textColor="@color/black"
+            android:textSize="12sp"
+            android:textStyle="normal" />
 
-            <Button
-                android:id="@+id/b20000"
-                android:layout_width="100dp"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="30dp"
-                android:layout_marginTop="5dp"
-                android:background="@drawable/loan_amount_background"
-                android:text="20,000"
-                android:textAllCaps="false"
-                android:textColor="@color/black"
-                android:textSize="12sp"
-                android:textStyle="normal" />
+    </LinearLayout>
 
-            <Button
-                android:id="@+id/b30000"
-                android:layout_width="100dp"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="30dp"
-                android:layout_marginTop="5dp"
-                android:background="@drawable/loan_amount_background"
-                android:text="30,000"
-                android:textAllCaps="false"
-                android:textColor="@color/black"
-                android:textSize="12sp"
-                android:textStyle="normal" />
-
-            <Button
-                android:id="@+id/b50000"
-                android:layout_width="100dp"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="30dp"
-                android:layout_marginTop="5dp"
-                android:background="@drawable/loan_amount_background"
-                android:text="50,000"
-                android:textAllCaps="false"
-                android:textColor="@color/black"
-                android:textSize="12sp"
-                android:textStyle="normal" />
-
-            <Button
-                android:id="@+id/b80000"
-                android:layout_width="100dp"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="30dp"
-                android:layout_marginTop="5dp"
-                android:background="@drawable/loan_amount_background"
-                android:text="80,000"
-                android:textAllCaps="false"
-                android:textColor="@color/black"
-                android:textSize="12sp"
-                android:textStyle="normal" />
-
-            <Button
-                android:id="@+id/b100000"
-                android:layout_width="100dp"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="30dp"
-                android:layout_marginTop="5dp"
-                android:layout_marginRight="10dp"
-                android:background="@drawable/loan_amount_background"
-                android:text="1,00,000"
-                android:textAllCaps="false"
-                android:textColor="@color/black"
-                android:textSize="12sp"
-                android:textStyle="normal" />
-
-        </LinearLayout>
-
-    </HorizontalScrollView>
 
     <TextView
         android:layout_width="wrap_content"
@@ -187,100 +223,117 @@
         android:textSize="16sp"
         android:textStyle="bold" />
 
-    <HorizontalScrollView
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:padding="10dp"
-        android:scrollbars="none">
+        android:layout_marginStart="10sp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="10sp"
+        android:orientation="horizontal"
+        android:weightSum="3">
 
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
+        <Button
+            android:id="@+id/b90"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="5dp"
+            android:layout_weight="1"
+            android:background="@drawable/loan_amount_background"
+            android:text="90 days"
+            android:textAllCaps="false"
+            android:textColor="@color/black"
+            android:textSize="12sp"
+            android:textStyle="normal" />
 
-            <Button
-                android:id="@+id/b90"
-                android:layout_width="100dp"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="15dp"
-                android:layout_marginTop="5dp"
-                android:background="@drawable/loan_amount_background"
-                android:text="90 days"
-                android:textAllCaps="false"
-                android:textColor="@color/black"
-                android:textSize="12sp"
-                android:textStyle="normal" />
+        <Button
+            android:id="@+id/b120"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_weight="1"
+            android:background="@drawable/button_gradient"
+            android:text="120 days"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:textSize="12sp"
+            android:textStyle="normal" />
 
-            <Button
-                android:id="@+id/b120"
-                android:layout_width="100dp"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="30dp"
-                android:layout_marginTop="5dp"
-                android:background="@drawable/button_gradient"
-                android:text="120 days"
-                android:textAllCaps="false"
-                android:textColor="@color/white"
-                android:textSize="12sp"
-                android:textStyle="normal" />
+        <Button
+            android:id="@+id/b180"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_weight="1"
+            android:background="@drawable/loan_amount_background"
+            android:text="180 days"
+            android:textAllCaps="false"
+            android:textColor="@color/black"
+            android:textSize="12sp"
+            android:textStyle="normal" />
 
-            <Button
-                android:id="@+id/b180"
-                android:layout_width="100dp"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="30dp"
-                android:layout_marginTop="5dp"
-                android:background="@drawable/loan_amount_background"
-                android:text="180 days"
-                android:textAllCaps="false"
-                android:textColor="@color/black"
-                android:textSize="12sp"
-                android:textStyle="normal" />
+    </LinearLayout>
 
-            <Button
-                android:id="@+id/b240"
-                android:layout_width="100dp"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="30dp"
-                android:layout_marginTop="5dp"
-                android:background="@drawable/loan_amount_background"
-                android:text="240 days"
-                android:textAllCaps="false"
-                android:textColor="@color/black"
-                android:textSize="12sp"
-                android:textStyle="normal" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10sp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="10sp"
+        android:orientation="horizontal"
+        android:weightSum="3">
 
-            <Button
-                android:id="@+id/b300"
-                android:layout_width="100dp"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="30dp"
-                android:layout_marginTop="5dp"
-                android:background="@drawable/loan_amount_background"
-                android:text="300 days"
-                android:textAllCaps="false"
-                android:textColor="@color/black"
-                android:textSize="12sp"
-                android:textStyle="normal" />
+        <Button
+            android:id="@+id/b240"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_weight="1"
+            android:background="@drawable/loan_amount_background"
+            android:text="240 days"
+            android:textAllCaps="false"
+            android:textColor="@color/black"
+            android:textSize="12sp"
+            android:textStyle="normal" />
 
-            <Button
-                android:id="@+id/b360"
-                android:layout_width="100dp"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="30dp"
-                android:layout_marginTop="5dp"
-                android:layout_marginRight="10dp"
-                android:background="@drawable/loan_amount_background"
-                android:text="360 days"
-                android:textAllCaps="false"
-                android:textColor="@color/black"
-                android:textSize="12sp"
-                android:textStyle="normal" />
+        <Button
+            android:id="@+id/b300"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_weight="1"
+            android:background="@drawable/loan_amount_background"
+            android:text="300 days"
+            android:textAllCaps="false"
+            android:textColor="@color/black"
+            android:textSize="12sp"
+            android:textStyle="normal" />
 
-        </LinearLayout>
+        <Button
+            android:id="@+id/b360"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_weight="1"
+            android:background="@drawable/loan_amount_background"
+            android:text="360 days"
+            android:textAllCaps="false"
+            android:textColor="@color/black"
+            android:textSize="12sp"
+            android:textStyle="normal" />
 
-    </HorizontalScrollView>
+    </LinearLayout>
 
     <TextView
         android:layout_width="match_parent"
@@ -294,9 +347,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="30dp"
-        android:layout_marginTop="5dp"
-        android:layout_marginRight="30dp"
-        android:padding="5dp">
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="30dp">
 
         <TextView
             android:layout_width="wrap_content"
@@ -328,8 +380,7 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="30dp"
         android:layout_marginTop="5dp"
-        android:layout_marginRight="30dp"
-        android:padding="5dp">
+        android:layout_marginRight="30dp">
 
         <TextView
             android:layout_width="wrap_content"
@@ -361,8 +412,7 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="30dp"
         android:layout_marginTop="5dp"
-        android:layout_marginRight="30dp"
-        android:padding="5dp">
+        android:layout_marginRight="30dp">
 
         <TextView
             android:layout_width="wrap_content"
@@ -394,8 +444,7 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="30dp"
         android:layout_marginTop="5dp"
-        android:layout_marginRight="30dp"
-        android:padding="5dp">
+        android:layout_marginRight="30dp">
 
         <TextView
             android:layout_width="wrap_content"
@@ -428,8 +477,7 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="30dp"
         android:layout_marginTop="5dp"
-        android:layout_marginRight="30dp"
-        android:padding="5dp">
+        android:layout_marginRight="30dp">
 
         <TextView
             android:layout_width="wrap_content"
@@ -461,8 +509,7 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="30dp"
         android:layout_marginTop="5dp"
-        android:layout_marginRight="30dp"
-        android:padding="5dp">
+        android:layout_marginRight="30dp">
 
         <TextView
             android:layout_width="wrap_content"
@@ -517,9 +564,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_marginLeft="30dp"
+        android:layout_marginLeft="40dp"
         android:layout_marginTop="10dp"
-        android:layout_marginRight="30dp"
+        android:layout_marginRight="40dp"
         android:background="@drawable/button_gradient"
         android:text="Apply Now"
         android:textAlignment="center"
