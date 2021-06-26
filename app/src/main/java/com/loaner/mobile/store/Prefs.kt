@@ -8,6 +8,7 @@ class Prefs(context: Context) {
     private var IS_LOGGINED = "IS_LOGGINED"
     private var ALL_DETAILS_FILLED = "ALL_DETAILS_FILLED"
     private var INTRO_SHOWN = "INTRO_SHOWN"
+    private var ONLY_ONCE = "ONLY_ONCE"
 
 
     private val preferences: SharedPreferences = context.getSharedPreferences(DB_NAME,Context.MODE_PRIVATE)
@@ -22,5 +23,7 @@ class Prefs(context: Context) {
     var introShown : Boolean?
         get() = preferences.getBoolean(INTRO_SHOWN, false)
         set(value) = preferences.edit().putBoolean(INTRO_SHOWN, value!!).apply()
-
+    var isOnceDone : Boolean?
+        get() = preferences.getBoolean(ONLY_ONCE, false)
+        set(value) = preferences.edit().putBoolean(ONLY_ONCE, value!!).apply()
 }

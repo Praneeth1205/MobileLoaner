@@ -22,19 +22,19 @@ class IntroScreenActivity : AppCompatActivity() {
             DataSource(
                 "Very Less Documents",
                 "Aadhar card/Pan card/Driving Licence",
-                R.drawable.report
+                R.drawable.ic_resume
             ),
             DataSource(
 
                 "Simple Process",
                 "Just three steps to get loan",
-                R.drawable.credit
+                R.drawable.ic_credit_card
             ),
             DataSource(
 
                 "Easy and Efficient loan",
                 "Get instant loan within minutes",
-                R.drawable.moneybag
+                R.drawable.ic_money_bag
             ),
         )
 

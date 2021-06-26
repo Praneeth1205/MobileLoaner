@@ -26,30 +26,22 @@ class MoreFragment : Fragment() {
         view.logout?.setOnClickListener {
             prefs.isLoggined = false
             prefs.allDetailsFilled = false
-            val intent = Intent(context,LoginActivity::class.java)
+            val intent = Intent(context, LoginActivity::class.java)
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK)
             startActivity(intent)
         }
         view.privacy?.setOnClickListener {
-            startActivity(Intent(context,PrivacypolicyActivity::class.java))
+            startActivity(Intent(context, PrivacypolicyActivity::class.java))
         }
 
         view.terms?.setOnClickListener {
-            startActivity(Intent(context,TermsConditionsActivity::class.java))
+            startActivity(Intent(context, TermsConditionsActivity::class.java))
         }
 
         view.about_us?.setOnClickListener {
-            startActivity(Intent(context,AboutUsActivity::class.java))
+            startActivity(Intent(context, AboutUsActivity::class.java))
         }
 
-        view.contact_us?.setOnClickListener {
-            startActivity(Intent(context,ContactUsActivity::class.java))
-        }
-
-        view.loan_history?.setOnClickListener {
-            //startActivity(Intent(context,LoanHistoryActivity::class.java))
-            Toast.makeText(context,"Coming Soon..",Toast.LENGTH_SHORT).show()
-        }
         return view
     }
 

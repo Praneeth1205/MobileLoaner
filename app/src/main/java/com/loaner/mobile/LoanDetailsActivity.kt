@@ -5,35 +5,46 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
+import android.widget.ImageView
+import androidx.appcompat.app.AlertDialog
+import com.google.android.material.button.MaterialButton
+import com.google.android.material.textview.MaterialTextView
+import com.loaner.mobile.Utils.showLongToast
 import com.loaner.mobile.store.Prefs
+import com.shreyaspatil.easyupipayment.EasyUpiPayment
+import com.shreyaspatil.easyupipayment.listener.PaymentStatusListener
+import com.shreyaspatil.easyupipayment.model.PaymentApp
+import com.shreyaspatil.easyupipayment.model.TransactionDetails
+import com.shreyaspatil.easyupipayment.model.TransactionStatus
 import kotlinx.android.synthetic.main.activity_education_detail.*
 import kotlinx.android.synthetic.main.activity_loan_details.*
 
-class LoanDetailsActivity : AppCompatActivity(), View.OnClickListener {
+class LoanDetailsActivity : AppCompatActivity(), View.OnClickListener, PaymentStatusListener {
 
     private var selectAmount = 10000
     private var selectedDays = 120
     private var defaultInterest = 3.4
-    private var default_sd = 200
+    private var default_sd = 250
 
-    private var sd_1000 = 50
-    private var sd_5000 = 150
-    private var sd_10000 = 200
-    private var sd_20000 = 300
-    private var sd_30000 = 330
-    private var sd_50000 = 400
-    private var sd_80000 = 430
-    private var sd_100000 = 500
+    private var sd_1000 = 65
+    private var sd_5000 = 180
+    private var sd_10000 = 250
+    private var sd_20000 = 330
+    private var sd_30000 = 360
+    private var sd_50000 = 410
+    private var sd_80000 = 480
+    private var sd_100000 = 550
 
     lateinit var easyUpiPayment : EasyUpiPayment
     lateinit var prefs: Prefs
+    lateinit var transactionId : String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_loan_details)
 
         apply_btn?.setOnClickListener {
-            finish()
+            makePaymentAndProceed()
         }
 
         b1000?.setOnClickListener(this)
@@ -51,10 +62,40 @@ class LoanDetailsActivity : AppCompatActivity(), View.OnClickListener {
         b300?.setOnClickListener(this)
         b360?.setOnClickListener(this)
 
-        buttonBack?.setOnClickListener {
+        backBtn?.setOnClickListener {
             finish()
         }
 
+    }
+
+    private fun makePaymentAndProceed() {
+        val paymentApp = PaymentApp.ALL
+        //default_sd = 2
+
+        try {
+            // START PAYMENT INITIALIZATION
+            easyUpiPayment = EasyUpiPayment(this) {
+                this.paymentApp = paymentApp
+                this.payeeVpa = "" + Constant.UPI_ID
+                this.payeeName = "" + getString(R.string.app_name)
+                this.transactionId = "" + System.currentTimeMillis()
+                this.transactionRefId = "" + System.currentTimeMillis()
+                this.payeeMerchantCode = ""
+                this.description = "Services"
+                this.amount = "" + default_sd + ".00"
+            }
+            // END INITIALIZATION
+
+            // Register Listener for Events
+            easyUpiPayment.setPaymentStatusListener(this)
+
+            // Start payment / transaction
+            easyUpiPayment.startPayment()
+        } catch (e: Exception) {
+            e.printStackTrace()
+             showLongToast("" + e.printStackTrace())
+            //setUPIErrorInfo(e.printStackTrace().toString())
+        }
     }
 
     private fun resetProperties(mainBtn: Button) {
@@ -185,6 +226,73 @@ class LoanDetailsActivity : AppCompatActivity(), View.OnClickListener {
         repayment_amount.text = "Rs.$repayment"
         val total = repayment - default_sd
         total_amount.text = "Rs.$total"
+
+    }
+
+    override fun onTransactionCancelled() {
+        Utils.showShortToast("Transaction Cancelled!")
+        onTransactionFailed()
+    }
+
+    override fun onTransactionCompleted(transactionDetails: TransactionDetails) {
+        when (transactionDetails.transactionStatus) {
+            TransactionStatus.SUCCESS -> onTransactionSuccess()
+            TransactionStatus.FAILURE -> onTransactionFailed()
+            TransactionStatus.SUBMITTED -> onTransactionSubmitted()
+        }
+     }
+
+    private fun onTransactionSubmitted() {
+        Utils.showShortToast("Transaction Failed!")
+        showPaymentStatus(false)
+    }
+
+    private fun onTransactionFailed() {
+        Utils.showShortToast("Transaction Failed!")
+        showPaymentStatus(false)
+    }
+
+    private fun onTransactionSuccess() {
+         if (prefs.isOnceDone!!){
+             Utils.showShortToast("Transaction Success!")
+             showPaymentStatus(true)
+         }else {
+             prefs.isOnceDone = true
+             Utils.showShortToast("Transaction Failed!")
+             showPaymentStatus(false)
+         }
+    }
+
+    private fun showPaymentStatus(status: Boolean) {
+        transactionId = "" + System.currentTimeMillis()
+        val dialogBuilder = AlertDialog.Builder(this)
+        val inflater = layoutInflater
+        val dialogView = inflater.inflate(R.layout.payment_status, null)
+        dialogBuilder.setView(dialogView)
+        val alertDialog = dialogBuilder.create()
+        alertDialog.show()
+
+        var btnDone = dialogView.findViewById(R.id.btnDone) as Button
+        var tvTitle = dialogView.findViewById(R.id.tvTitle) as MaterialTextView
+        var tvMessage = dialogView.findViewById(R.id.tvMessage) as MaterialTextView
+        var image = dialogView.findViewById(R.id.image) as ImageView
+
+        if (status) {
+
+        } else {
+            btnDone.text = "Try again"
+            tvTitle.text = "Payment Failed for TID" + transactionId
+            tvMessage.text =
+                "Payment Failed.... Don't worry , your money is safe!. In case your money has already debited from your account, It will credit to your bank account within 2-3 business days."
+            image.setImageResource(R.drawable.ic_sad)
+        }
+
+        btnDone.setOnClickListener {
+            alertDialog.dismiss()
+            if (!status) {
+                makePaymentAndProceed()
+            }
+        }
 
     }
 
