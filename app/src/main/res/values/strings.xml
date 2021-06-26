@@ -3,6 +3,8 @@
     <string name="title_home">Home</string>
     <string name="title_profile">Profile</string>
     <string name="title_more">More</string>
+    <string name="payment_success" translatable="false">Payment Successful</string>
+    <string name="payment_success_message">Services paid successfully, explore our wide range of products from Mobile Loaner</string>
 
     <string name="terms">
 
@@ -297,6 +299,7 @@ If you have any questions or suggestions about my Privacy Policy, do not hesitat
     <string name="loan_rule">If you want to avail loan you need to pay security deposit in order to verify your solvency,
         prepare loan agreement and other services.
         This amount will be adjusted on your repayment</string>
+    <string name="done">Done</string>
 
 
 </resources>
