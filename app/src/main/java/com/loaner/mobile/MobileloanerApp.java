@@ -16,7 +16,7 @@ public class MobileloanerApp extends Application {
         super.onCreate();
 
         MobileloanerApp.context = this;
-        setupActivityListener();
+        //setupActivityListener();
     }
 
 
